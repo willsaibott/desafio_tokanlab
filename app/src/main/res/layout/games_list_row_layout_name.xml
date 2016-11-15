@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/game_row_height"
+    android:id="@+id/glr_row">
+
+    <ImageView
+        android:layout_height="@dimen/game_icon_size"
+        android:id="@+id/glr_gameIcon"
+        android:layout_width="@dimen/game_icon_size"
+        android:background="@android:drawable/ic_menu_help"
+        android:layout_gravity="left|center"
+        android:layout_marginStart="@dimen/layout_margin" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/glr_linearLayout"
+        android:gravity="right|center"
+        android:layout_marginStart="@dimen/icon_image_margin"
+        android:layout_marginEnd="@dimen/layout_margin">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/glr_gameName"
+            android:textStyle="normal|bold"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black"
+            android:text="The Witcher 3: Wild Hunt"
+            android:fontFamily="sans-serif"
+            android:textSize="20dip"
+            android:gravity="center" />
+
+        <TextView
+            android:text="PS4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/glr_gamePlatform"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12dip"
+            android:fontFamily="sans-serif"
+            android:textAlignment="textStart"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+</LinearLayout>

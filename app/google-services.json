@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "644831811923",
+    "project_id": "inductive-folio-149417"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644831811923:android:d9c3bf6e4c12f137",
+        "android_client_info": {
+          "package_name": "com.tokenlab.guinb.desafio_tokenlab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644831811923-2l13qgnq9df8huphklp2htlud8q9pvtq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tokenlab.guinb.desafio_tokenlab",
+            "certificate_hash": "5648D499FAE4BDBD851E8B4C2849B1C8D6DDCA5B"
+          }
+        },
+        {
+          "client_id": "644831811923-mi6cs5so56avq5kk1l3rbra4e274kn70.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4FP0iFp9AyXAI1n0Z9Lyke4ouP2iLDL4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
