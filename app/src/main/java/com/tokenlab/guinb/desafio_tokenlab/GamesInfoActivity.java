@@ -122,6 +122,7 @@ public class GamesInfoActivity extends YouTubeBaseActivity implements AppCompatC
 
     }
 
+    // Setting Info in Intern Views
     private void setInfo() {
         CustomApplication app = (CustomApplication) getApplicationContext();
         gameName    = getIntent().getExtras().getString(GamesListActivity.GAME_NAME);
