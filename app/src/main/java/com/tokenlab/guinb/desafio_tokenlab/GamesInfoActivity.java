@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
@@ -198,6 +199,7 @@ public class GamesInfoActivity extends YouTubeBaseActivity implements AppCompatC
         reviewsListView.addHeaderView(header);
         reviewsListView.addHeaderView(footer);
         reviewsListView.setScrollingCacheEnabled(false);
+        reviewsListView.setFriction(ViewConfiguration.getScrollFriction()*100);
 
         gameLogo = (ImageView) findViewById(R.id.gi_gameLogo);
         gameNameView = (TextView) findViewById(R.id.gi_gameName);
