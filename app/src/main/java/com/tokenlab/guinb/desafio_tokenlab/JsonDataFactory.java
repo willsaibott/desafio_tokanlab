@@ -14,14 +14,16 @@ import java.util.List;
 
 /**
  * Created by guinb on 11/10/2016.
+ *
+ * json factory is a Parser Class
  */
 
 public class JsonDataFactory {
 
+    // read json input stream
     public static String readStream(InputStream inputStream) throws IOException {
         if (inputStream != null) {
             Writer writer = new StringWriter();
-
             char[] buffer = new char[1024];
             try {
                 Reader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"),1024);
@@ -38,6 +40,7 @@ public class JsonDataFactory {
         }
     }
 
+    // parsing inputStream with gjson
     public static JsonData getData(InputStream inputStream){
         Gson gson = new Gson();
         JsonData jsonData = null;

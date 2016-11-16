@@ -13,7 +13,7 @@
     <string name="back_button_label">Back</string>
     <string name="reload_button_label">Reload</string>
     <string name="search_button_label">Search</string>
-    <string name="rating_label">Rating: </string>
+    <string name="review_label">Review Stars:</string>
     <string name="wii">Wii</string>
     <string name="wii_u">Wii U</string>
     <string name="ps3">PS3</string>

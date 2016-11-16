@@ -10,7 +10,7 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:theme="@style/AppTheme.AppBarOverlay"
         android:background="@android:color/white">
 
@@ -24,187 +24,17 @@
             app:maxButtonHeight="@android:dimen/app_icon_size"
             app:titleTextColor="@android:color/background_light" />
 
-        <ScrollView
+        <ListView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/gi_linearLayout"
-                    android:layout_marginTop="@dimen/layout_margin"
-                    android:layout_marginStart="@dimen/layout_margin"
-                    android:layout_marginEnd="@dimen/layout_margin">
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/gi_gameTitleLinearLayout">
-
-                        <ImageView
-                            app:srcCompat="@android:drawable/ic_menu_help"
-                            android:id="@+id/gi_gameLogo"
-                            android:scaleType="fitXY"
-                            android:focusable="true"
-                            android:focusableInTouchMode="true"
-                            android:maxHeight="120dp"
-                            android:maxWidth="120dp"
-                            android:minHeight="60dp"
-                            android:minWidth="60dp"
-                            android:layout_gravity="top|left"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp" />
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="@dimen/icon_image_margin">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/gi_gameName"
-                                android:gravity="top|right"
-                                android:textStyle="normal|bold"
-                                android:textColor="@android:color/background_dark"
-                                android:fontFamily="sans-serif"
-                                android:textAlignment="textStart"
-                                android:text="The Witcher 3: Wild Hunt"
-                                android:textSize="18dip" />
-
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/gi_platformsLinearLayout">
-
-                                <TextView
-                                    android:text="@string/platforms"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:id="@+id/gi_platformsLabel"
-                                    android:textColor="@android:color/background_dark"
-                                    android:textStyle="normal|bold"
-                                    android:layout_gravity="left"
-                                    android:fontFamily="sans-serif"
-                                    android:textSize="12dip"
-                                    android:layout_marginEnd="@dimen/layout_margin" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:id="@+id/gi_platformsView"
-                                    android:textColor="@android:color/background_dark"
-                                    android:textAlignment="textStart"
-                                    android:textSize="12dip" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/gi_gameReleaseLinearLayout">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/gi_releaseDataLabel"
-                                    android:textColor="@android:color/background_dark"
-                                    android:textStyle="normal|bold"
-                                    android:text="@string/release_date"
-                                    android:layout_gravity="left"
-                                    android:fontFamily="sans-serif"
-                                    android:textSize="12dip"
-                                    android:layout_marginEnd="@dimen/layout_margin" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:id="@+id/gi_releaseDataView"
-                                    android:textAlignment="textStart"
-                                    android:textColor="@android:color/background_dark"
-                                    android:fontFamily="sans-serif"
-                                    android:textSize="12dip" />
-
-                            </LinearLayout>
-
-                            <RatingBar
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/gi_ratingBar"
-                                android:numStars="5"
-                                style="@android:style/Widget.Holo.Light.RatingBar.Small"
-                                android:clickable="true"
-                                android:rating="3"
-                                android:minHeight="16dp"
-                                android:maxHeight="16dp"
-                                android:background="@android:color/background_light"
-                                android:layout_gravity="left|center_vertical"
-                                android:layout_marginTop="@dimen/layout_margin" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <com.google.android.youtube.player.YouTubePlayerView
-                    android:id="@+id/gi_trailerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:minHeight="240dp"
-                    android:layout_marginStart="@dimen/layout_margin"
-                    android:layout_marginEnd="@dimen/layout_margin"
-                    android:layout_marginTop="@dimen/layout_margin" />
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="12dp">
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="15dip"
-                            android:textAlignment="textStart"
-                            android:text="@string/rating_label"
-                            android:textColor="@android:color/black"
-                            android:textStyle="normal|bold"
-                            android:id="@+id/gi_ratingLabel"
-                            android:visibility="gone" />
-
-                        <EditText
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:inputType="numberDecimal"
-                            android:ems="10"
-                            android:id="@+id/gi_ratingValue"
-                            android:numeric="decimal" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </ScrollView>
+            android:layout_height="match_parent"
+            android:id="@+id/gi_reviewListView"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:layout_marginTop="@dimen/layout_margin"
+            android:layout_marginStart="@dimen/layout_margin"
+            android:layout_marginEnd="@dimen/layout_margin"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:animationCache="false" />
 
     </android.support.design.widget.AppBarLayout>
 

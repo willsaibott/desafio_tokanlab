@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/layout_margin"
+    android:id="@+id/gi_reviewLayout">
+
+    <TextView
+        android:text="@string/review_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gi_reviewLabel"
+        android:textColor="@android:color/black"
+        android:textStyle="normal|bold"
+        android:textAlignment="textStart"
+        android:textSize="15dip"
+        android:layout_marginTop="@dimen/layout_margin" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/gi_CommentEdit"
+        android:layout_below="@+id/gi_sendButton"
+        android:layout_marginTop="@dimen/layout_margin" />
+
+    <ImageButton
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_send"
+        android:id="@+id/gi_sendButton"
+        android:layout_gravity="right"
+        android:layout_width="60dp"
+        android:src="@android:drawable/ic_menu_send"
+        android:background="@android:color/transparent"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/layout_margin" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/gi_reviewRateEdit"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/item_subtitle_size"
+        android:maxLength="1"
+        android:layout_toEndOf="@+id/gi_reviewLabel" />
+</RelativeLayout>

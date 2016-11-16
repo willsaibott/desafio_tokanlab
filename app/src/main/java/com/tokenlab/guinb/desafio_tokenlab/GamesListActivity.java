@@ -26,7 +26,6 @@ import android.widget.ListView;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,7 +51,6 @@ public class GamesListActivity extends AppCompatActivity {
     static int IMAGE_HEIGHT;
 
     private ProgressBar loadingBar;
-    private LinearLayout bottomLinearLayout;
     private SearchView searchBar;
     private ListView gamesListView;
     private ListView platformListView;
@@ -86,12 +84,8 @@ public class GamesListActivity extends AppCompatActivity {
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        getSupportActionBar().setHomeButtonEnabled(true);
 
-
         // setting View Id's and click listeners
         setViewId();
-
-
-
         // download gamelist from url
         getGameList();
 
@@ -100,15 +94,11 @@ public class GamesListActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_games_list, menu);
-
         MenuItem searchMenuItem = menu.findItem(R.id.searchItem);
 
-
+        // setting SearchView SearchBar with a searchManager
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         searchBar = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
-
-
-        //searchBar.setIconifiedByDefault(false);
         searchBar.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchBar.setSubmitButtonEnabled(true);
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -133,15 +123,12 @@ public class GamesListActivity extends AppCompatActivity {
             }
 
             @Override
-            public boolean onMenuItemActionCollapse(MenuItem item) {
+            public boolean onMenuItemActionCollapse(MenuItem item) { // going out of SearchView
                 if (gameListAdapter!=null)
                     gameListAdapter.getFilter().filter("");
                 return true;
             }
         });
-        //searchBar.setOnSuggestionListener();
-
-
         return true;
     }
 
@@ -169,7 +156,6 @@ public class GamesListActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
@@ -184,26 +170,23 @@ public class GamesListActivity extends AppCompatActivity {
                 }).create().show();
     }
 
-
+    // Setting View Ids
     private void setViewId() {
         loadingBar = (ProgressBar)findViewById(R.id.gl_loadingBar);
         percentageView = (TextView) findViewById(R.id.gl_percentageView);
         gamesListView = (ListView) findViewById(R.id.gl_listView);
     }
 
-
-
+    // setting game ListView with gameListAdapter
     private void setGamesListView(){
         gameListAdapter = new GamesListAdapter(getApplicationContext(), jsonData.getGames());
 
         gamesListView.setAdapter(gameListAdapter);
         gamesListView.setTextFilterEnabled(false);
+
+        // showing progress percentage and hiding the game ListView while it is not ready to show
         percentageView.setVisibility(View.GONE);
         gamesListView.setVisibility(View.VISIBLE);
-
-        // use to enable search view popup text
-        //friendListView.setTextFilterEnabled(true);
-
         // set up click listener
         gamesListView.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
@@ -213,11 +196,9 @@ public class GamesListActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
-
-
+    // A simle Comparation Class to use in the sort algorithm
     class CompareByName implements Comparator<Games>{
         @Override
         public int compare(Games o1, Games o2) {
@@ -225,7 +206,7 @@ public class GamesListActivity extends AppCompatActivity {
         }
     }
 
-
+    // start the Game Info Activity of the game chosen
     private void handleGamesListItemClick(Games game) {
         callNextActivity(game);
     }
@@ -236,17 +217,13 @@ public class GamesListActivity extends AppCompatActivity {
         if(!isConnectedToInternet){
             // out of connection
             Toast.makeText(this, "Device is not connected to Internet./nPlease Check your Internet Connection.", Toast.LENGTH_LONG).show();
-        }else{
+        }else{ // start games list download
             gamesListView.setVisibility(View.GONE);
             loadingBar.setVisibility(View.VISIBLE);
             percentageView.setVisibility(View.VISIBLE);
             new DonloadDataTask().execute(GAME_LIST_URL);
         }
     }
-
-
-
-
 
     // return status of Internet Connection
     public boolean isOnline() {
@@ -255,11 +232,10 @@ public class GamesListActivity extends AppCompatActivity {
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
-
+    // calling Game Info Activity of a chosen game
     protected void callNextActivity(Games game){
         Intent nextActivity = new Intent(getApplicationContext(), GamesInfoActivity.class);
         nextActivity.putExtra(GAME_NAME, game.getName());
-
         startActivity(nextActivity);
     }
 
@@ -271,10 +247,8 @@ public class GamesListActivity extends AppCompatActivity {
         this.jsonData = jsonData;
     }
 
-
-
+    // Doanload of the meta-data
     private class DonloadDataTask extends AsyncTask<String, Integer, Double> {
-
 
         @Override
         protected Double doInBackground(String... urlString) {
@@ -288,8 +262,7 @@ public class GamesListActivity extends AppCompatActivity {
             return null;
         }
 
-
-
+        // when download finishes, store data at my CustomApplication app and show game list
         protected void onPostExecute(Double result){
             loadingBar.setVisibility(View.GONE);
             Toast.makeText(getApplicationContext(), "Download Finished with Success", Toast.LENGTH_LONG).show();
@@ -298,6 +271,8 @@ public class GamesListActivity extends AppCompatActivity {
             app.setJsonData(jsonData);
             setGamesListView();
         }
+
+        // Show Download Progress on loadingBar and the percentage of the Donload into the TexView percentageView
         protected void onProgressUpdate(Integer... progress){
             String percetage = new String("");
             percetage = String.valueOf(progress[0]) + "%";
@@ -305,12 +280,13 @@ public class GamesListActivity extends AppCompatActivity {
             percentageView.setText(percetage);
         }
 
+        // Request the json file
         public void getJsonData(String urlString) throws MalformedURLException {
 
             URL url = new URL(urlString);
             HttpURLConnection urlConnection = null;
 
-            publishProgress(0);
+            publishProgress(0); // reset the progress
             try {
                 urlConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = new BufferedInputStream(urlConnection.getInputStream());
@@ -327,7 +303,7 @@ public class GamesListActivity extends AppCompatActivity {
                 else{
                     getJsonData(urlString);
                 }
-                publishProgress(100/(jsonData.getGames().size()+1));
+                publishProgress(100/(jsonData.getGames().size()+1)); // updating progress after download the json file
             }
         }
 
@@ -336,12 +312,12 @@ public class GamesListActivity extends AppCompatActivity {
             if (!GameImages.isEmpty()) GameImages.clear();
             int i = 1;
 
-
+            // Download all the Games' Logos
             for (Games game : jsonData.getGames()) {
                 if (isOnline()) {
                     URL url = new URL(game.getImage());
                     HttpURLConnection urlConnection = null;
-                    try {
+                    try { // try Download the original Game Logo
                         urlConnection =  (HttpURLConnection) url.openConnection();
                         InputStream inputStream = new BufferedInputStream(urlConnection.getInputStream());
 
@@ -351,9 +327,8 @@ public class GamesListActivity extends AppCompatActivity {
                         GameIcons.put(game.getName(), icon);
                         GameImages.put(game.getName(), image);
                         bitmap.recycle();
-
                     }
-                    catch (IOException e) {
+                    catch (IOException e) { // if you cannot, use a default image
                         e.printStackTrace();
                         Bitmap bitmap = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.undefined);
                         Bitmap image = Bitmap.createScaledBitmap(bitmap, IMAGE_WIDTH, IMAGE_HEIGHT, false);
@@ -365,11 +340,12 @@ public class GamesListActivity extends AppCompatActivity {
                         urlConnection.disconnect();
                     }
                     i++;
-                    publishProgress(100*i/(jsonData.getGames().size()+1));
+                    publishProgress(100*i/(jsonData.getGames().size()+1)); // Showing download progress
                 }
             }
         }
 
+        // this function creates an icon from the original Game logo.
         private Bitmap createSquareBitmap(Bitmap bitmap) {
 
             Bitmap resizedBitmap = null;

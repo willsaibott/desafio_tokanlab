@@ -15,6 +15,12 @@ import java.util.ArrayList;
 
 /**
  * Created by guinb on 11/13/2016.
+ *
+ * This Class is a Adapter Class that can be used to filtrate the game List by Platform.
+ *
+ * This functionality is under test yet, So it will not be showed
+ *
+ *
  */
 
 public class PlatformListAdapter extends BaseAdapter {
@@ -48,7 +54,6 @@ public class PlatformListAdapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup parent) {
         final ViewHolder holder;
 
-
         if (view == null) {
             LayoutInflater layoutInflater = (LayoutInflater) app.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = layoutInflater.inflate(R.layout.platforms_list_row_layout, parent, false);
@@ -73,7 +78,6 @@ public class PlatformListAdapter extends BaseAdapter {
             }
         }
     }
-
 
     static class ViewHolder{
         TextView name;

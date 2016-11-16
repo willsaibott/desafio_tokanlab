@@ -3,7 +3,6 @@ package com.tokenlab.guinb.desafio_tokenlab;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,6 @@ import java.util.ArrayList;
 
 public class GamesListAdapter extends BaseAdapter implements Filterable {
 
-
     private Context context;
     private GamesFilter gamesFilter;
     private Typeface typeface;
@@ -38,50 +36,27 @@ public class GamesListAdapter extends BaseAdapter implements Filterable {
         getFilter();
     }
 
-    /**
-     * Get size of user list
-     * @return userList size
-     */
     @Override
     public int getCount() {
         return filteredList.size();
     }
 
-    /**
-     * Get specific item from user list
-     * @param i item index
-     * @return list item
-     */
     @Override
     public Object getItem(int i) {
         return filteredList.get(i);
     }
 
-    /**
-     * Get user list item id
-     * @param i item index
-     * @return current item id
-     */
     @Override
     public long getItemId(int i) {
         return i;
     }
 
-    /**
-     * Create list row view
-     * @param position index
-     * @param view current list item view
-     * @param parent parent
-     * @return view
-     */
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         // A ViewHolder keeps references to children views to avoid unnecessary calls
         // to findViewById() on each row.
         final ViewHolder holder;
         final Games game = (Games) getItem(position);
-
-
         if (view == null) {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = layoutInflater.inflate(R.layout.games_list_row_layout_name, parent, false);
@@ -105,25 +80,19 @@ public class GamesListAdapter extends BaseAdapter implements Filterable {
         return view;
     }
 
-    /**
-     * Get custom filter
-     * @return filter
-     */
     @Override
     public Filter getFilter() {
         if (gamesFilter == null) {
             gamesFilter = new GamesFilter();
         }
-
         return gamesFilter;
     }
 
     public ArrayList<Games> getGamesList(){
         return filteredList;
     }
-    /**
-     * Keep reference to children view to avoid unnecessary calls
-     */
+
+    // Class that contains the Children Views of a row int the game ListView
     static class ViewHolder {
         ImageView gameIcon;
         LinearLayout gameNameLayout;
@@ -131,7 +100,7 @@ public class GamesListAdapter extends BaseAdapter implements Filterable {
         TextView  gamePlatform;
     }
 
-
+    // Filter Class that will do search and filtrate the original game list when matches with the key
     private class GamesFilter extends Filter {
 
         @Override
@@ -145,7 +114,6 @@ public class GamesListAdapter extends BaseAdapter implements Filterable {
                     if (game.getName().toUpperCase().contains(filteredString.toString().toUpperCase()))
                         gamesToShow.add(game);
                     else {
-
                         for (String str : game.getPlatforms())
                             if (str.toUpperCase().contains(filteredString.toString().toUpperCase())) {
                                 gamesToShow.add(game);
@@ -153,24 +121,15 @@ public class GamesListAdapter extends BaseAdapter implements Filterable {
                             }
                     }
                 }
-
-
-
                 filterResults.count = gamesToShow.size();
                 filterResults.values = gamesToShow;
             } else {
                 filterResults.count = gamesList.size();
                 filterResults.values = gamesList;
             }
-
             return filterResults;
         }
 
-        /**
-         * Notify about filtered list to ui
-         * @param constraint text
-         * @param results filtered result
-         */
         @SuppressWarnings("unchecked")
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {

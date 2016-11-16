@@ -2,19 +2,24 @@ package com.tokenlab.guinb.desafio_tokenlab;
 
 import android.app.Application;
 import android.graphics.Bitmap;;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.common.api.GoogleApiClient;
+
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * Created by guinb on 11/13/2016.
+ *
+ * Custom application class that store the most important information
  */
 
 public class CustomApplication extends Application {
     private JsonData jsonData;
     private HashMap<String, Bitmap> gameIcon;
     private HashMap<String, Bitmap> gameImages;
-    private String user;
+    private GoogleSignInAccount account;
 
     public JsonData getJsonData() {
         return jsonData;
@@ -71,11 +76,11 @@ public class CustomApplication extends Application {
         return "";
     }
 
-    public String getUser() {
-        return user;
+    public GoogleSignInAccount getAccount() {
+        return account;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setAccount(GoogleSignInAccount account) {
+        this.account = account;
     }
 }

@@ -12,4 +12,8 @@
     <dimen name="google_button_height">52dp</dimen>
     <dimen name="icon_image_margin">10dp</dimen>
     <dimen name="video_image_margin">5dp</dimen>
+    <dimen name="item_subtitle_size">13dip</dimen>
+    <dimen name="item_title_size">18dip</dimen>
+
+
 </resources>

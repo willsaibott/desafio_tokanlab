@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/gi_reviewRow"
+    android:layout_marginTop="@dimen/layout_margin"
+    android:layout_marginBottom="@dimen/layout_margin">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@android:drawable/ic_menu_help"
+            android:id="@+id/gi_userIcon" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/icon_image_margin">
+
+            <TextView
+                android:text="Will FFF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/gi_userName"
+                android:textStyle="normal|bold"
+                android:textSize="18dip"
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="@string/review_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/gi_reviewLabel"
+                    android:textColor="@android:color/black"
+                    android:textStyle="normal|bold"
+                    android:textAlignment="textStart"
+                    android:textSize="15dip" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/gi_datetime"
+                    android:textSize="13dip"
+                    android:textColor="@android:color/darker_gray"
+                    android:layout_marginStart="@dimen/icon_image_margin" />
+
+            </LinearLayout>
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/gi_rate"
+                style="@android:style/Widget.Holo.RatingBar.Small"
+                android:rating="3"
+                android:max="5" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gi_reviewCommentView"
+        android:textSize="15dip"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginTop="@dimen/layout_margin" />
+</LinearLayout>

@@ -19,8 +19,7 @@
         android:layout_height="match_parent"
         android:id="@+id/glr_linearLayout"
         android:gravity="right|center"
-        android:layout_marginStart="@dimen/icon_image_margin"
-        android:layout_marginEnd="@dimen/layout_margin">
+        android:layout_marginStart="@dimen/icon_image_margin">
 
         <TextView
             android:layout_width="match_parent"

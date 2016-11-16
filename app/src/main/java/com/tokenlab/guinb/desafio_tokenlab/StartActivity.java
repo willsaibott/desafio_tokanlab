@@ -169,7 +169,7 @@ public class StartActivity extends AppCompatActivity implements GoogleApiClient.
             // defining App's User
             CustomApplication app = (CustomApplication)getApplicationContext();
             GoogleSignInAccount account = result.getSignInAccount();
-            app.setUser(account.getDisplayName());
+            app.setAccount(account);
 
             // Loggin successfull msg
             String msg = getString(R.string.login_successfull) + account.getEmail();
